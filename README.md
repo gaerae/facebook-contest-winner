@@ -17,28 +17,35 @@ A easily and quickly way to pick a winner for Facebook timeline promotion.
 
 #### 🎉 Pick a Winner from Comment
 
-```
+Example: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
+
+```javascript
 // Number of winners
-FacebookContestWinner.comment(3)
+FacebookContestWinner.comment(3);
 
 // Designated winners is Optional Parameter
-FacebookContestWinner.comment(3, [123, 456, 789])
+FacebookContestWinner.comment(3, [123, 456, 789]);
 ```
 
 #### 🎉 Pick a Winner from Share
 
-```
+Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
+
+```javascript
 // Number of winners
-FacebookContestWinner.share(3)
+FacebookContestWinner.share(3);
 
 // Designated winners is Optional Parameter
-FacebookContestWinner.comment(3, [123, 456, 789])
+FacebookContestWinner.comment(3, [123, 456, 789]);
 ```
 
 #### 📜 Automatically scrolling to bottom of page (Optional)
 Please use it on the shared page.
-```
-FacebookContestWinner.autoScroll()
+
+Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
+
+```javascript
+FacebookContestWinner.autoScroll();
 ```
 
 ## Screen

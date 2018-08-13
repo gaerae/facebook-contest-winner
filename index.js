@@ -30,7 +30,7 @@ FacebookContestWinner = {
     let pickWinners = {};
     document.querySelectorAll("div[id=repost_view_permalink] div[role=article] > div[id^=u_]")
       .forEach((element, index) => {
-        let userProfile = element.querySelector("a[class=profileLink]");
+        let userProfile = element.querySelector("span[class^=fwb] > a[data-hovercard]");
         let userContent = element.querySelector("div > .userContent > p");
         let userId = this.parseURL(userProfile.dataset.hovercard);
         let tempUrl = userProfile.href.split("?")[0];
@@ -80,7 +80,7 @@ FacebookContestWinner = {
     console.groupCollapsed("%c ⭐ Facebook Contest Winner ⭐ ", "color: #ffffff; background: #000000; border: 1px solid #000000;");
       console.log("Help 🙋 https://github.com/gaerae/facebook-contest-winner");
       console.group("%c Winner Details ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
-        console.log(winners);
+        console.table(winners);
       console.groupEnd();
       console.group("%c Optional Parameter ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
         console.log(winnerIDs);
@@ -114,3 +114,8 @@ FacebookContestWinner = {
     }, 2000);
   },
 };
+
+// Usage
+// FacebookContestWinner.comment(3);
+// FacebookContestWinner.share(3);
+// FacebookContestWinner.autoScroll();
