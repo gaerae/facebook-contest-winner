@@ -40,7 +40,7 @@ FacebookContestWinner.share(3);
 
 // 당첨자 수와 페이스북 사용자 고유 번호를 넣어서 실행하세요.
 // 페이스북 사용자 고유 번호를 넣으면, 입력한 사용자가 리스트에 있을 경우 당첨자로 표시됩니다. 
-FacebookContestWinner.comment(3, [123, 456, 789]);
+FacebookContestWinner.share(3, [123, 456, 789]);
 ```
 
 #### 📜 모든 댓글 자동 보기 (옵션)

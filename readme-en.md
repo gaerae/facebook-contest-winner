@@ -10,7 +10,7 @@ A easily and quickly way to pick a winner for Facebook timeline promotion.
 📋 You can easily and quickly pick a winner by browser.
 1. Open the Facebook page or group post.
 2. Open the Facebook comment or share dialog in a new tab.
-3. Open the Console in browser.(Windows or Linux: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd> / macOS: <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>J</kbd>)
+3. Open the Console in browser. (Windows or Linux: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd> / macOS: <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>J</kbd>)
 4. Copy and Paste all the contents of the [index.js](https://raw.githubusercontent.com/gaerae/facebook-contest-winner/master/index.js) file.
 5. Click the Button to View more comments or shares.
 6. Go to [Usage](#usage).
@@ -38,7 +38,7 @@ Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137
 FacebookContestWinner.share(3);
 
 // Designated winners is Optional Parameter
-FacebookContestWinner.comment(3, [123, 456, 789]);
+FacebookContestWinner.share(3, [123, 456, 789]);
 ```
 
 #### 📜 Automatically view all comments (Optional)
