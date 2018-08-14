@@ -2,6 +2,7 @@
 # Facebook Contest Winner
 A easily and quickly way to pick a winner for Facebook timeline promotion.
 
+**[😎 English](README.md)** • [한국어 (Korean)](https://blog.gaerae.com/2018/08/facebook-contest-winner.html)
 
 ## Overview
 
@@ -39,13 +40,22 @@ FacebookContestWinner.share(3);
 FacebookContestWinner.comment(3, [123, 456, 789]);
 ```
 
-#### 📜 Automatically scrolling to bottom of page (Optional)
-Please use it on the shared page.
+#### 📜 Automatically view all comments (Optional)
+Please use it on the comment page.
+
+Example: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
+
+```javascript
+FacebookContestWinner.viewAllComments();
+```
+
+#### 📜 Automatically view all shares (Optional)
+Please use it on the share page.
 
 Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
 
 ```javascript
-FacebookContestWinner.autoScroll();
+FacebookContestWinner.viewAllShares();
 ```
 
 ## Screen

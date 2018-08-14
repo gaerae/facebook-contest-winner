@@ -67,7 +67,11 @@ FacebookContestWinner = {
       }
     } else {
       do {
-        winUser = users[Math.floor(Math.random() * userLength)];
+        if (userLength < number) {
+          number = userLength;
+        }
+
+        let winUser = users[Math.floor(Math.random() * userLength)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
@@ -98,8 +102,24 @@ FacebookContestWinner = {
     return (tempParsing["id"]) ? tempParsing["id"] : "";
   },
 
-  // Automatically scrolling to bottom of page
-  autoScroll() {
+  // Automatically view all comments
+  viewAllComments() {
+    let pager = 0;
+    let scroll = setInterval(() => {
+      let tempPager = document.querySelector('a[class=UFIPagerLink]');
+      if (tempPager) {
+        tempPager.click();
+        pager++;
+        console.log(`a ${pager} pager.`);
+      } else {
+        clearInterval(scroll);
+        console.log("Execution finished.");
+      }
+    }, 2000);
+  },
+
+  // Automatically view all shares
+  viewAllShares() {
     let pageY = 0;
     let scroll = setInterval(() => {
       window.scrollBy(0, 1000);
@@ -109,7 +129,7 @@ FacebookContestWinner = {
         console.log(`pageYOffset: ${pageY}`);
       } else {
         clearInterval(scroll);
-        console.log("At the bottom");
+        console.log("Execution finished.");
       }
     }, 2000);
   },
@@ -118,4 +138,5 @@ FacebookContestWinner = {
 // Usage
 // FacebookContestWinner.comment(3);
 // FacebookContestWinner.share(3);
-// FacebookContestWinner.autoScroll();
+// FacebookContestWinner.viewAllComments();
+// FacebookContestWinner.viewAllShares();
