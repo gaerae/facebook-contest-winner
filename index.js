@@ -38,7 +38,7 @@ FacebookContestWinner = {
           name: userProfile.textContent,
           id: userId,
           url: (tempUrl.indexOf("profile.php") === -1) ? tempUrl : `${tempUrl}?id=${userId}`,
-          pic: element.querySelector("img[role=img]").src,
+          pic: '', //element.querySelector("img[role=img]").src,
           content: (userContent) ? userContent.textContent : "",
         };
 
