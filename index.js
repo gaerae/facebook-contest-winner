@@ -3,23 +3,23 @@ FacebookContestWinner = {
   comment(number = 5, pickUsers = []) {
     let users = {};
     let pickWinners = {};
-    document.querySelectorAll("div[class=permalinkPost], div[class=UFIList] div[id^=comment_]")
+    document.querySelectorAll("ul[class=_7791] > li")
       .forEach((element, index) => {
-        let user = element.querySelector(".UFICommentActorName");
+        let user = element.querySelector("div[class=_72vr] a");
         let userId = this.parseURL(user.dataset.hovercard);
         let tempUrl = user.href.split("?")[0];
         users[index] = {
           name: user.textContent,
           id: userId,
           url: (tempUrl.indexOf("profile.php") === -1) ? tempUrl : `${tempUrl}?id=${userId}`,
-          pic: element.querySelector(".UFIActorImage").src,
-          content: element.querySelector(".UFICommentBody").textContent,
+          pic: element.querySelector("img").src,
+          content: element.querySelector("._3l3x").textContent,
         };
 
         if (pickUsers.indexOf(`${users[index].id}`) !== -1) {
           pickWinners[`${users[index].id}`] = users[index];
         }
-        //console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+        // console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
       });
     this.pick(users, number, pickWinners);
   },
@@ -45,7 +45,7 @@ FacebookContestWinner = {
         if (pickUsers.indexOf(`${users[index].id}`) !== -1) {
           pickWinners[`${users[index].id}`] = users[index];
         }
-        //console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+        // console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
       });
     this.pick(users, number, pickWinners);
   },
@@ -71,7 +71,7 @@ FacebookContestWinner = {
           number = userLength;
         }
 
-        let winUser = users[Math.floor(Math.random() * userLength)];
+        let winUser = users[this.getRandomIntInclusive(0, userLength)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
@@ -81,14 +81,14 @@ FacebookContestWinner = {
       } while (winnerIndex < number);
     }
 
-    console.groupCollapsed("%c ⭐ Facebook Contest Winner ⭐ ", "color: #ffffff; background: #000000; border: 1px solid #000000;");
-      console.log("Help 🙋 https://github.com/gaerae/facebook-contest-winner");
-      console.group("%c Winner Details ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
-        console.table(winners);
-      console.groupEnd();
-      console.group("%c Optional Parameter ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
-        console.log(winnerIDs);
-      console.groupEnd();
+    console.groupCollapsed(`%c ⭐ ${Object.keys(winners).length} Winners and Results ⭐ `, "color: #ffffff; background: #000000; border: 1px solid #000000;");
+    console.log("Help 🙋 https://github.com/gaerae/facebook-contest-winner");
+    console.group("%c Winner Details ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+    console.table(winners);
+    console.groupEnd();
+    console.group("%c Optional Parameter ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+    console.log(winnerIDs);
+    console.groupEnd();
     console.groupEnd();
   },
 
@@ -100,6 +100,13 @@ FacebookContestWinner = {
       tempParsing[tempSplit[0]] = tempSplit[1];
     }
     return (tempParsing["id"]) ? tempParsing["id"] : "";
+  },
+
+  // Getting a random integer between two values, inclusive
+  getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   },
 
   // Automatically view all comments
@@ -136,7 +143,7 @@ FacebookContestWinner = {
 };
 
 // Usage
-// FacebookContestWinner.comment(3);
-// FacebookContestWinner.share(3);
+// FacebookContestWinner.comment(5);
+// FacebookContestWinner.share(5);
 // FacebookContestWinner.viewAllComments();
 // FacebookContestWinner.viewAllShares();
