@@ -28,7 +28,7 @@ FacebookContestWinner = {
   share(number = 5, pickUsers = []) {
     let users = {};
     let pickWinners = {};
-    document.querySelectorAll("div[id=repost_view_permalink] div[role=article] > div[id^=u_]")
+    document.querySelectorAll("div[id=repost_view_dialog] div[role=article] > div[id^=u_]")
       .forEach((element, index) => {
         let userProfile = element.querySelector("span[class^=fwb] > a[data-hovercard]");
         let userContent = element.querySelector("div > .userContent > p");
@@ -71,7 +71,7 @@ FacebookContestWinner = {
           number = userLength;
         }
 
-        let winUser = users[this.getRandomIntInclusive(0, userLength)];
+        let winUser = users[this.getRandomIntInclusive(0, number)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
