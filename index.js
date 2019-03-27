@@ -71,7 +71,7 @@ FacebookContestWinner = {
           number = userLength;
         }
 
-        let winUser = users[this.getRandomIntInclusive(0, number)];
+        let winUser = users[this.getRandomIntInclusive(0, userLength)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
