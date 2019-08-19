@@ -52,16 +52,16 @@ FacebookContestWinner = {
 
   // Pick one or multiple winners
   pick(users, number = 5, pickWinners = {}) {
-    const userLength = Object.keys(users).length;
-    const pickWinnerLength = Object.keys(pickWinners).length;
+    const userLength = Object.keys(users).length - 1;
+    const pickWinnerLength = Object.keys(pickWinners).length - 1;
     let winners = {};
     let winnerIndex = 0;
     let winnerIDs = [];
-    console.log("%c 🎉 Winners!", "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
+    console.log("%c 🎉 Winners!", "font-weight: bold; font-size: 50px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
 
     if (pickWinnerLength > 0) {
       for (let pickKey in pickWinners) {
-        console.log(`%c ${pickWinners[pickKey].name} ${pickWinners[pickKey].url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
+        console.log(`%c ${pickWinners[pickKey].name} ${pickWinners[pickKey].url}`, "font-weight: bold; font-size: 15px; color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
         winners[pickWinners[pickKey].id] = pickWinners[pickKey];
         winnerIDs.push(pickWinners[pickKey].id);
       }
@@ -73,7 +73,7 @@ FacebookContestWinner = {
 
         let winUser = users[this.getRandomIntInclusive(0, userLength)];
         if (winners[winUser.id] === undefined) {
-          console.log(`%c ${winUser.name} ${winUser.url}`, "color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
+          console.log(`%c ${winUser.name} ${winUser.url}`, "font-weight: bold; font-size: 15px; color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
           winnerIDs.push(winUser.id);
           winnerIndex++;
