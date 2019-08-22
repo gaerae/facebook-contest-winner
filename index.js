@@ -52,8 +52,8 @@ FacebookContestWinner = {
 
   // Pick one or multiple winners
   pick(users, number = 5, pickWinners = {}) {
-    const userLength = Object.keys(users).length - 1;
-    const pickWinnerLength = Object.keys(pickWinners).length - 1;
+    const userLength = Object.keys(users).length;
+    const pickWinnerLength = Object.keys(pickWinners).length;
     let winners = {};
     let winnerIndex = 0;
     let winnerIDs = [];
@@ -71,7 +71,7 @@ FacebookContestWinner = {
           number = userLength;
         }
 
-        let winUser = users[this.getRandomIntInclusive(0, userLength)];
+        let winUser = users[this.getRandomIntInclusive(0, userLength-1)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "font-weight: bold; font-size: 15px; color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
