@@ -1,6 +1,7 @@
 FacebookContestWinner = {
+  autoWinner: [],
   // List all commented users
-  comment(number = 5, pickUsers = []) {
+  comment(number = 5, pickUsers = [], type = null) {
     let users = {};
     let pickWinners = {};
     document.querySelectorAll("ul[class=_7791] > li")
@@ -21,11 +22,11 @@ FacebookContestWinner = {
         }
         // console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
       });
-    this.pick(users, number, pickWinners);
+    this.pick(users, number, pickWinners, type);
   },
 
   // List all shared users
-  share(number = 5, pickUsers = []) {
+  share(number = 5, pickUsers = [], type = null) {
     let users = {};
     let pickWinners = {};
     document.querySelectorAll("div[id=repost_view_dialog] div[role=article] > div[id^=u_]")
@@ -47,23 +48,30 @@ FacebookContestWinner = {
         }
         // console.log(`%c ${users[index].name}(${users[index].id}): ${users[index].url}`, "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
       });
-    this.pick(users, number, pickWinners);
+    this.pick(users, number, pickWinners, type);
   },
 
   // Pick one or multiple winners
-  pick(users, number = 5, pickWinners = {}) {
+  pick(users, number = 5, pickWinners = {}, type = null) {
     const userLength = Object.keys(users).length;
     const pickWinnerLength = Object.keys(pickWinners).length;
     let winners = {};
     let winnerIndex = 0;
     let winnerIDs = [];
-    console.log("%c 🎉 Winners!", "font-weight: bold; font-size: 50px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
-
+    if (type == 'auto') {
+      console.log("%c 🎉 Front Runner!", "font-weight: bold; font-size: 30px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
+    } else {
+      console.log("%c 🎉 Winners!", "font-weight: bold; font-size: 50px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)");
+    }
     if (pickWinnerLength > 0) {
       for (let pickKey in pickWinners) {
+        if (winnerIndex == number) {
+          continue;
+        }
         console.log(`%c ${pickWinners[pickKey].name} ${pickWinners[pickKey].url}`, "font-weight: bold; font-size: 15px; color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
         winners[pickWinners[pickKey].id] = pickWinners[pickKey];
         winnerIDs.push(pickWinners[pickKey].id);
+        winnerIndex++;
       }
     } else {
       do {
@@ -71,7 +79,7 @@ FacebookContestWinner = {
           number = userLength;
         }
 
-        let winUser = users[this.getRandomIntInclusive(0, userLength-1)];
+        let winUser = users[this.getRandomIntInclusive(0, userLength - 1)];
         if (winners[winUser.id] === undefined) {
           console.log(`%c ${winUser.name} ${winUser.url}`, "font-weight: bold; font-size: 15px; color: #ffffff; background: #1d69db; border: 1px solid #0f4ba6; border-radius: 3px;");
           winners[winUser.id] = winUser;
@@ -81,20 +89,25 @@ FacebookContestWinner = {
       } while (winnerIndex < number);
     }
 
-    console.groupCollapsed(`%c ⭐ ${Object.keys(winners).length} Winners and Results ⭐ `, "color: #ffffff; background: #000000; border: 1px solid #000000;");
-    console.log("Help 🙋 https://github.com/gaerae/facebook-contest-winner");
-    console.group("%c Winner Details ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
-    console.table(winners);
-    console.groupEnd();
-    console.group("%c Optional Parameter ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
-    console.log(winnerIDs);
-    console.groupEnd();
-    console.groupEnd();
+    if (type == 'auto') {
+      this.autoWinner = winnerIDs;
+    } else {
+      console.groupCollapsed(`%c ⭐ ${Object.keys(winners).length} Winners and Results ⭐ `, "color: #ffffff; background: #000000; border: 1px solid #000000;");
+      console.log("Help 🙋 https://github.com/gaerae/facebook-contest-winner");
+      console.group("%c Winner Details ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+      console.table(winners);
+      console.groupEnd();
+      console.group("%c Optional Parameter ", "color: #ffffff; background: #db178a; border: 1px solid #ae0c6b; border-radius: 3px;");
+      console.log(winnerIDs);
+      console.groupEnd();
+      console.groupEnd();
+    }
   },
 
   // parse a url
   parseURL(url = "") {
-    let tempParsing = [], tempSplit, tempUrls = url.slice(url.indexOf("?") + 1).split("&");
+    let tempParsing = [],
+      tempSplit, tempUrls = url.slice(url.indexOf("?") + 1).split("&");
     for (let i = 0; i < tempUrls.length; i++) {
       tempSplit = tempUrls[i].split("=");
       tempParsing[tempSplit[0]] = tempSplit[1];
@@ -140,9 +153,16 @@ FacebookContestWinner = {
       }
     }, 2000);
   },
+
+  // Automatically view all shares
+  auto(number = 5) {
+    this.share(number + 5, [], 'auto');
+    this.comment(number, this.autoWinner, null);
+  },
 };
 
 // Usage
+// FacebookContestWinner.auto(5);
 // FacebookContestWinner.comment(5);
 // FacebookContestWinner.share(5);
 // FacebookContestWinner.viewAllComments();
