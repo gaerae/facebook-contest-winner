@@ -154,7 +154,7 @@ FacebookContestWinner = {
     }, 2000);
   },
 
-  // Automatically view all shares
+  // Automatically winners
   auto(number = 5) {
     this.share(number + 5, [], 'auto');
     this.comment(number, this.autoWinner, null);
