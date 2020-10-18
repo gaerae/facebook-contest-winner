@@ -19,47 +19,27 @@
 
 #### 🎉 댓글에서 당첨자 추첨 하기
 
-예제: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
-
-```javascript
-// 당첨자 수를 넣어서 실행하세요.
-FacebookContestWinner.comment(3);
-
-// 당첨자 수와 페이스북 사용자 고유 번호를 넣어서 실행하세요.
-// 페이스북 사용자 고유 번호를 넣으면, 입력한 사용자가 리스트에 있을 경우 당첨자로 표시됩니다. 
-FacebookContestWinner.comment(3, [123, 456, 789]);
-```
-
-#### 🎉 공유에서 당첨자 추첨 하기
-
-예제: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
-
-```javascript
-// 당첨자 수를 넣어서 실행하세요.
-FacebookContestWinner.share(3);
-
-// 당첨자 수와 페이스북 사용자 고유 번호를 넣어서 실행하세요.
-// 페이스북 사용자 고유 번호를 넣으면, 입력한 사용자가 리스트에 있을 경우 당첨자로 표시됩니다. 
-FacebookContestWinner.share(3, [123, 456, 789]);
-```
-
-#### 📜 모든 댓글 자동 보기 (옵션)
-댓글 페이지에서만 사용하세요.
+예제는 당첨자 3명을 기준으로 작성되었습니다.
 
 예제: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
 
 ```javascript
-FacebookContestWinner.viewAllComments();
+// 댓글에서 우승자 추첨
+fcw.comment(3);
+
+// 공유에서 우승자 추첨
+fcw.share(3);
+
+// 좋아요에서 우승자 추첨
+fcw.like(3);
+
+// 공유와 댓글 모두 참여한 우승자 추첨
+fcw.share_comment(3);
+
+// 좋아요와 댓글 모두 참여한 우승자 추첨
+fcw.like_comment(3);
 ```
 
-#### 📜 모든 공유 자동 보기 (옵션)
-공유 페이지에서만 사용하세요.
-
-예제: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
-
-```javascript
-FacebookContestWinner.viewAllShares();
-```
 
 ## 화면
 #### 결과 화면

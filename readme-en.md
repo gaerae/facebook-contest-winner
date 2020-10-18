@@ -17,46 +17,26 @@ A easily and quickly way to pick a winner for Facebook timeline promotion.
 
 ## Usage
 
-#### 🎉 Pick a Winner from Comment
+#### 🎉 Pick a Winner
+An example is the number of 3 winners
 
 Example: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
 
 ```javascript
-// Number of winners
-FacebookContestWinner.comment(3);
+// winners in the comment
+fcw.comment(3);
 
-// Designated winners is Optional Parameter
-FacebookContestWinner.comment(3, [123, 456, 789]);
-```
+// winners in the share
+fcw.share(3);
 
-#### 🎉 Pick a Winner from Share
+// winners in the like
+fcw.like(3);
 
-Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
+// winners who both shared and commented
+fcw.share_comment(3);
 
-```javascript
-// Number of winners
-FacebookContestWinner.share(3);
-
-// Designated winners is Optional Parameter
-FacebookContestWinner.share(3, [123, 456, 789]);
-```
-
-#### 📜 Automatically view all comments (Optional)
-Please use it on the comment page.
-
-Example: [Facebook Comment](https://www.facebook.com/zuck/posts/10105044271137001)
-
-```javascript
-FacebookContestWinner.viewAllComments();
-```
-
-#### 📜 Automatically view all shares (Optional)
-Please use it on the share page.
-
-Example: [Facebook Share](https://www.facebook.com/shares/view?id=10105044271137001)
-
-```javascript
-FacebookContestWinner.viewAllShares();
+// winners who both liked and commented
+fcw.like_comment(3);
 ```
 
 ## Screen
